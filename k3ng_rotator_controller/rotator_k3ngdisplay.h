@@ -16,7 +16,7 @@
 
                                                               */
 
-#define FEATURE_4_BIT_LCD_DISPLAY
+//#define FEATURE_4_BIT_LCD_DISPLAY
 // #define FEATURE_ADAFRUIT_I2C_LCD
 // #define FEATURE_YOURDUINO_I2C_LCD
 // #define FEATURE_RFROBOT_I2C_DISPLAY
@@ -68,10 +68,18 @@
 #endif
 
 #define K3NG_DISPLAY_LIBRARY_VERSION "2018.11.21.01"
+
+
+#if defined(FEATURE_ADAFRUIT_SSD1306)
+#define MAX_SCREEN_BUFFER_COLUMNS 21	// 128 pixels / 6 pixels (smallest font)
+#define MAX_SCREEN_BUFFER_ROWS 4		//  32 pixels / 8 pixels (smallest font)
+#else
 #define MAX_SCREEN_BUFFER_COLUMNS 20
 #define MAX_SCREEN_BUFFER_ROWS 4
+#endif
 
-#define ATTRIBUTE_BLINK B00000001
+// moved to rotator.h
+//#define ATTRIBUTE_BLINK B00000001
 
 #define TEXT_BLINK_MS 500
 #define WORK_STRING_SIZE 32

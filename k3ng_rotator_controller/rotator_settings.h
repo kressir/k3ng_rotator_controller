@@ -1,7 +1,7 @@
 
 /* -------------------------- rotation settings ---------------------------------------*/
 
-#define AZIMUTH_STARTING_POINT_DEFAULT 180      // the starting point in degrees of the azimuthal rotator - only used for initializing EEPROM the first time the code is run                                               
+#define AZIMUTH_STARTING_POINT_DEFAULT 0 //180      // the starting point in degrees of the azimuthal rotator - only used for initializing EEPROM the first time the code is run                                               
 #define AZIMUTH_ROTATION_CAPABILITY_DEFAULT 450 // the default rotation capability of the rotator in degrees - only used for initializing EEPROM the first time the code is run
 
 /* 
@@ -37,45 +37,50 @@ You can tweak these, but read the online documentation!
 #define OPTION_OVERLAP_LED_BLINK_MS 100                                             
 
 // PWM speed voltage settings
-#define PWM_SPEED_VOLTAGE_X1  64         // 0 to 255
-#define PWM_SPEED_VOLTAGE_X2  128        // 0 to 255
-#define PWM_SPEED_VOLTAGE_X3  191        // 0 to 255
-#define PWM_SPEED_VOLTAGE_X4  253        // 0 to 255
+//#define PWM_SPEED_VOLTAGE_X1  64         // 0 to 255
+//#define PWM_SPEED_VOLTAGE_X2  128        // 0 to 255
+//#define PWM_SPEED_VOLTAGE_X3  191        // 0 to 255
+//#define PWM_SPEED_VOLTAGE_X4  253        // 0 to 255
+#define PWM_SPEED_VOLTAGE_X1  0         // 0 to 255
+#define PWM_SPEED_VOLTAGE_X2  0        // 0 to 255
+#define PWM_SPEED_VOLTAGE_X3  0        // 0 to 255
+#define PWM_SPEED_VOLTAGE_X4  0        // 0 to 255
 
 //AZ
-#define AZ_SLOWSTART_DEFAULT 0            // 0 = off ; 1 = on
-#define AZ_SLOWDOWN_DEFAULT 0             // 0 = off ; 1 = on
+#define AZ_SLOWSTART_DEFAULT 1            // 0 = off ; 1 = on
+#define AZ_SLOWDOWN_DEFAULT 1             // 0 = off ; 1 = on
 #define AZ_SLOW_START_UP_TIME 2000        // if slow start is enabled, the unit will ramp up speed for this many milliseconds
-#define AZ_SLOW_START_STARTING_PWM 1      // PWM starting value for slow start (must be < 256)
-#define AZ_SLOW_START_STEPS 20            // must be < 256
+#define AZ_SLOW_START_STARTING_PWM 0      // PWM starting value for slow start (must be < 256)
+#define AZ_SLOW_START_STEPS 255            // must be < 256
 
 
-#define SLOW_DOWN_BEFORE_TARGET_AZ 10.0  // if slow down is enabled, slowdown will be activated within this many degrees of target azimuth
-#define AZ_SLOW_DOWN_PWM_START 200         // starting PWM value for slow down (must be < 256)
-#define	AZ_SLOW_DOWN_PWM_STOP 20          // ending PWM value for slow down (must be < 256)
-#define AZ_SLOW_DOWN_STEPS 200 //20       // must be < 256
-#define AZ_INITIALLY_IN_SLOW_DOWN_PWM 50  // PWM value to start at if we're starting in the slow down zone (1 - 255)
+#define SLOW_DOWN_BEFORE_TARGET_AZ 0  // if slow down is enabled, slowdown will be activated within this many degrees of target azimuth
+#define AZ_SLOW_DOWN_PWM_START 255         // starting PWM value for slow down (must be < 256)
+#define	AZ_SLOW_DOWN_PWM_STOP 0          // ending PWM value for slow down (must be < 256)
+#define AZ_SLOW_DOWN_STEPS 255 //20       // must be < 256
+#define AZ_INITIALLY_IN_SLOW_DOWN_PWM 5  // PWM value to start at if we're starting in the slow down zone (1 - 255)
 
 //EL
-#define EL_SLOWSTART_DEFAULT 0            // 0 = off ; 1 = on
-#define EL_SLOWDOWN_DEFAULT 0             // 0 = off ; 1 = on
+#define EL_SLOWSTART_DEFAULT 1            // 0 = off ; 1 = on
+#define EL_SLOWDOWN_DEFAULT 1             // 0 = off ; 1 = on
 #define EL_SLOW_START_UP_TIME 2000        // if slow start is enabled, the unit will ramp up speed for this many milliseconds
-#define EL_SLOW_START_STARTING_PWM 1      // PWM starting value for slow start  (must be < 256)
-#define EL_SLOW_START_STEPS 20            // must be < 256
+#define EL_SLOW_START_STARTING_PWM 0      // PWM starting value for slow start  (must be < 256)
+#define EL_SLOW_START_STEPS 255            // must be < 256
 
-#define SLOW_DOWN_BEFORE_TARGET_EL 10.0  // if slow down is enabled, slowdown will be activated within this many degrees of target elevation
-#define EL_SLOW_DOWN_PWM_START 200         // starting PWM value for slow down (must be < 256)
-#define	EL_SLOW_DOWN_PWM_STOP 20          // ending PWM value for slow down (must be < 256)
-#define EL_SLOW_DOWN_STEPS 20
-#define EL_INITIALLY_IN_SLOW_DOWN_PWM 50  // PWM value to start at if we're starting in the slow down zone (1 - 255)
+#define SLOW_DOWN_BEFORE_TARGET_EL 0  // if slow down is enabled, slowdown will be activated within this many degrees of target elevation
+#define EL_SLOW_DOWN_PWM_START 255         // starting PWM value for slow down (must be < 256)
+//do we need EL_SLOW_DOWN_PWM_START?  shouldn't it start at what it is at when slow started?
+#define	EL_SLOW_DOWN_PWM_STOP 0          // ending PWM value for slow down (must be < 256)
+#define EL_SLOW_DOWN_STEPS 255
+#define EL_INITIALLY_IN_SLOW_DOWN_PWM 5  // PWM value to start at if we're starting in the slow down zone (1 - 255)
 
 #define TIMED_SLOW_DOWN_TIME 2000
 
 //Variable frequency output settings - LOWEST FREQUENCY IS 31 HERTZ DUE TO ARDUINO tone() FUNCTION LIMITATIONS!
-#define AZ_VARIABLE_FREQ_OUTPUT_LOW   31     // Frequency in hertz of minimum speed
-#define AZ_VARIABLE_FREQ_OUTPUT_HIGH 5000 //100    // Frequency in hertz of maximum speed
-#define EL_VARIABLE_FREQ_OUTPUT_LOW   31     // Frequency in hertz of minimum speed
-#define EL_VARIABLE_FREQ_OUTPUT_HIGH 100    // Frequency in hertz of maximum speed
+#define AZ_VARIABLE_FREQ_OUTPUT_LOW   1     // Frequency in hertz of minimum speed
+#define AZ_VARIABLE_FREQ_OUTPUT_HIGH 100000 //100    // Frequency in hertz of maximum speed
+#define EL_VARIABLE_FREQ_OUTPUT_LOW   1     // Frequency in hertz of minimum speed
+#define EL_VARIABLE_FREQ_OUTPUT_HIGH 100000 //100    // Frequency in hertz of maximum speed
 
 // Settings for OPTION_AZ_MANUAL_ROTATE_LIMITS
 #define AZ_MANUAL_ROTATE_CCW_LIMIT 0   // if using a rotator that starts at 180 degrees, set this to something like 185
@@ -100,8 +105,8 @@ You can tweak these, but read the online documentation!
 #define ENCODER_PRESET_TIMEOUT 5000
 
 // various code settings
-#define AZIMUTH_TOLERANCE 3.0            // rotator will stop within X degrees when doing autorotation
-#define ELEVATION_TOLERANCE 0.1 //1.0
+#define AZIMUTH_TOLERANCE 0.5 //3.0            // rotator will stop within X degrees when doing autorotation
+#define ELEVATION_TOLERANCE 0.5 //1.0
 #define OPERATION_TIMEOUT 120000        // timeout for any rotation operation in mS ; 120 seconds is usually enough unless you have the speed turned down
 #define TIMED_INTERVAL_ARRAY_SIZE 20
 
@@ -109,49 +114,62 @@ You can tweak these, but read the online documentation!
 #define REMOTE_UNIT_PORT_BAUD_RATE 9600
 #define GPS_PORT_BAUD_RATE 9600
 #define GPS_MIRROR_PORT_BAUD_RATE 9600
-#define CONTROL_PORT_MAPPED_TO &Serial  // change this line to map the control port to a different serial port (Serial1, Serial2, etc.)
+#define CONTROL_PORT_MAPPED_TO &SerialUSB  // change this line to map the control port to a different serial port (Serial1, Serial2, etc.)
 //#define REMOTE_PORT_MAPPED_TO &Serial1  // change this line to map the remote_unit port to a different serial port
-#define GPS_PORT_MAPPED_TO &Serial2  // change this line to map the GPS port to a different serial port
+#define GPS_PORT_MAPPED_TO &Serial1  // change this line to map the GPS port to a different serial port
 //#define GPS_MIRROR_PORT &Serial1 //3 // use this to mirror output from a GPS unit into the Arduino out another port (uncomment to enable)
 #define OPTION_SEND_STRING_OUT_CONTROL_PORT_WHEN_INITIALIZING_STRING ("test\n\r")
 
-#define LCD_COLUMNS 20 //16
-#define LCD_ROWS 4 //2       // this is automatically set below for HARDWARE_EA4TX_ARS_USB and HARDWARE_M0UPU
-#define LCD_UPDATE_TIME 1000           // LCD update time in milliseconds
+// 8x21 character graphic display
+#define GFX_WIDTH 128 // pixels
+#define GFX_HEIGHT 32 // pixels
+#define GFX_TEXT_SIZE_MULT_WIDTH 6 // pixels
+#define GFX_TEXT_SIZE_MULT_HEIGHT 8 // pixels
+
+#define LCD_UPDATE_TIME 100           // LCD update time in milliseconds
+#define LCD_COLUMNS (GFX_WIDTH / (GFX_TEXT_SIZE_MULT_WIDTH)) // 1px column separation
+#define LCD_ROWS (GFX_HEIGHT / (GFX_TEXT_SIZE_MULT_HEIGHT)) // 2px row separation
+
 #define LCD_HHMM_CLOCK_POSITION LEFT          //LEFT or RIGHT
 #define LCD_HHMMSS_CLOCK_POSITION LEFT          //LEFT or RIGHT
 #define LCD_ALT_HHMM_CLOCK_AND_MAIDENHEAD_POSITION LEFT
 #define LCD_ALT_HHMM_CLOCK_AND_MAIDENHEAD_ROW 1
-#define LCD_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD_POSITION CENTER
-#define LCD_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD_ROW 3
+#define LCD_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD_POSITION LEFT
+#define LCD_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD_ROW 1
 #define LCD_BIG_CLOCK_ROW 4
 #define LCD_GPS_INDICATOR_POSITION RIGHT //LEFT or RIGHT
 #define LCD_GPS_INDICATOR_ROW 1
-#define LCD_MOON_TRACKING_ROW 3                                   // LCD display row for OPTION_DISPLAY_MOON_TRACKING_CONTINUOUSLY
+#define LCD_MOON_TRACKING_ROW 5                                   // LCD display row for OPTION_DISPLAY_MOON_TRACKING_CONTINUOUSLY
+#define LCD_MOON_TRACKING_ACTIVE_ATTRIBUTE ATTRIBUTE_BLINK
 #define LCD_MOON_TRACKING_UPDATE_INTERVAL 5000
-#define LCD_SUN_TRACKING_ROW 4                                    // LCD display row for OPTION_DISPLAY_SUN_TRACKING_CONTINUOUSLY
+#define LCD_SUN_TRACKING_ROW 6                                    // LCD display row for OPTION_DISPLAY_SUN_TRACKING_CONTINUOUSLY
+#define LCD_SUN_TRACKING_ACTIVE_ATTRIBUTE ATTRIBUTE_BLINK
 #define LCD_SUN_TRACKING_UPDATE_INTERVAL 5000
 #define LCD_MOON_OR_SUN_TRACKING_CONDITIONAL_ROW 3                // LCD display row for OPTION_DISPLAY_MOON_OR_SUN_TRACKING_CONDITIONAL
 #define SPLASH_SCREEN_TIME 3000
 
-#define LCD_HEADING_ROW 2
-#define LCD_HEADING_FIELD_SIZE 20
-#define LCD_AZ_ONLY_HEADING_ROW 1
-#define LCD_AZ_ONLY_HEADING_FIELD_SIZE 20
-#define LCD_EL_ONLY_HEADING_ROW 2
-#define LCD_EL_ONLY_HEADING_FIELD_SIZE 20
-#define LCD_STATUS_ROW 1
-#define LCD_STATUS_FIELD_SIZE 20
+#define LCD_HEADING_ROW 4
+#define LCD_HEADING_FIELD_SIZE LCD_COLUMNS
+#define LCD_STATUS_ROW 8
+#define LCD_STATUS_FIELD_SIZE LCD_COLUMNS
 #define LCD_DIRECTION_ROW 1
 #define LCD_HHMMSS_CLOCK_ROW 1
 #define LCD_HHMM_CLOCK_ROW 1
+#define PARKING_STATUS_ROW 7
 #define PARKING_STATUS_DISPLAY_TIME_MS 5000
 
-#define AZ_BRAKE_DELAY 3000            // in milliseconds
-#define EL_BRAKE_DELAY 3000            // in milliseconds
+#define LCD_AZ_ONLY_HEADING_ROW 3
+#define LCD_AZ_ONLY_HEADING_FIELD_SIZE LCD_COLUMNS
+#define LCD_EL_ONLY_HEADING_ROW 4
+#define LCD_EL_ONLY_HEADING_FIELD_SIZE LCD_COLUMNS
 
-#define BRAKE_ACTIVE_STATE HIGH
-#define BRAKE_INACTIVE_STATE LOW
+#define PARKING_STATUS_DISPLAY_TIME_MS 5000
+
+#define AZ_BRAKE_DELAY 1000            // in milliseconds
+#define EL_BRAKE_DELAY 1000            // in milliseconds
+
+#define BRAKE_ACTIVE_STATE LOW
+#define BRAKE_INACTIVE_STATE HIGH
 
 #define EEPROM_MAGIC_NUMBER 109
 #define EEPROM_WRITE_DIRTY_CONFIG_TIME  30  //time in seconds
@@ -222,15 +240,12 @@ You can tweak these, but read the online documentation!
 #define MOON_AOS_AZIMUTH_MAX 360
 #define MOON_AOS_ELEVATION_MIN 0
 #define MOON_AOS_ELEVATION_MAX 180
-
  
 #define SUN_TRACKING_CHECK_INTERVAL 5000
 #define SUN_AOS_AZIMUTH_MIN 0
 #define SUN_AOS_AZIMUTH_MAX 360
 #define SUN_AOS_ELEVATION_MIN 0
 #define SUN_AOS_ELEVATION_MAX 180
-
-
 
 #define TRACKING_ACTIVE_CHAR "*"
 #define TRACKING_INACTIVE_CHAR "-"
@@ -343,4 +358,6 @@ You can tweak these, but read the online documentation!
 
 //#define SET_I2C_BUS_SPEED 800000L // Can set up to 800 kHz, depending on devices.  800000L = 800 khz, 400000L = 400 khz.  Default is 100 khz
 
-  
+#define STEPPER_TIMER_PERIOD_MICROSECONDS 15  //timer interrupt period (us), 1 = 1MHz, 10 = 100 kHz
+// min is about 5 (200,000 Hz), max is about 1350 (740 Hz)
+

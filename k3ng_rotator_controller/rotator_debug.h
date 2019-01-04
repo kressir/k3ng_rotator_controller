@@ -34,9 +34,15 @@
 #elif defined(ARDUINO_AVR_PROMICRO) || defined(ARDUINO_AVR_LEONARDO) || defined(ARDUINO_AVR_MICRO) || defined(ARDUINO_AVR_YUN) || defined(ARDUINO_AVR_ESPLORA) || defined(ARDUINO_AVR_LILYPAD_USB) || defined(ARDUINO_AVR_ROBOT_CONTROL) || defined(ARDUINO_AVR_ROBOT_MOTOR) || defined(ARDUINO_AVR_LEONARDO_ETH)
   #define SERIAL_PORT_CLASS Serial_
 #elif defined(TEENSYDUINO)
-  #define SERIAL_PORT_CLASS usb_serial_class
+	#define SERIAL_PORT_CLASS HardwareSerial
+	//#define USB_SERIAL_PORT_CLASS usb_serial_class
+	#define USB_SERIAL_PORT_CLASS usb_serial_class
+#elif defined(ARDUINO_SAMD_ZERO)
+	#define SERIAL_PORT_CLASS HardwareSerial
+	#define USB_SERIAL_PORT_CLASS Serial_
 #else
   #define SERIAL_PORT_CLASS HardwareSerial
+#define USB_SERIAL_PORT_CLASS HardwareSerial
 #endif
 
 // #ifdef FEATURE_ETHERNET
@@ -73,7 +79,11 @@ class DebugClass
 
 
 extern uint8_t debug_mode;
+#if defined(TEENSYDUINO) || defined(ARDUINO_SAMD_ZERO)
+extern USB_SERIAL_PORT_CLASS * control_port;
+#else
 extern SERIAL_PORT_CLASS * control_port;
+#endif
 
 // #ifdef FEATURE_ETHERNET
 //   extern EthernetClient ethernetclient0;

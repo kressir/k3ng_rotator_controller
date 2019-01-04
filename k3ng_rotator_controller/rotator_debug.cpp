@@ -4,6 +4,9 @@
 
 #include "rotator_debug.h"
 
+#ifdef ARDUINO_SAMD_ZERO
+#include <avr/dtostrf.h> 
+#endif
 #define FEATURE_ETHERNET
 
 void DebugClass::print(const char *str)
